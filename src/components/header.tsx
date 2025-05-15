@@ -1,23 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { useTheme } from "next-themes";
-import {
-  SignInButton,
-  SignOutButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useClerk,
-} from "@clerk/nextjs";
+import { SignOutButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./theme-mode";
-import { dark } from "@clerk/themes";
 
 export default function Header() {
-  const { theme } = useTheme();
-
   return (
     <header className="sticky top-0 z-10 px-4 py-3 min-w-full font-sans backdrop-blur-2xl bg-background shadow-lg">
       <nav className="flex justify-between items-center">
@@ -34,28 +20,12 @@ export default function Header() {
           <SignedOut>
             <Button variant="outline" asChild>
               <Link href="/sign-in">Iniciar sesión</Link>
-              {/* <SignInButton
-                mode="modal"
-                initialValues={{
-                  username: "rugeles10",
-                }}
-                appearance={{
-                  baseTheme: theme === "dark" ? dark : undefined,
-                }}
-              >
-                Iniciar sesión
-              </SignInButton> */}
             </Button>
           </SignedOut>
           <SignedIn>
             <Button variant="destructive" className="cursor-pointer" asChild>
               <SignOutButton />
             </Button>
-            {/* <UserButton
-              appearance={{
-                baseTheme: theme === "dark" ? dark : undefined,
-              }}
-            /> */}
           </SignedIn>
         </div>
       </nav>
